@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="icon" href="https://modernguest.com/img/ico.png" />
+		<meta name="theme-color" content="#3E1F61">
+	</head>
+	<body>
+		<style>* {box-sizing:border-box;} body, html {margin:0;box-sizing:border-box;background-color:#131313;scroll-behavior:smooth;overflow-x:hidden;}
+		.lighter img{width:20%;margin-left:10%;}.menu{padding:20px;float:right;}.hero{position:relative;transform:translateY(-1%);}.pu {color:#A650FF;}.w{color:white;}.c{text-align:center;}h2{font-size:48px;}.s2{display:flex;}.w1f2.pa div img {padding: 48px;}.prtns{margin-left: 15%;margin-right: 15%;background-color: #A650FF;padding: 16px;border-radius: 32px;}div.bg {background: url(img/v20.svg);min-height: 130vh;background-repeat: no-repeat;background-size: cover;background-position:50% 0%;}div.bg div.p.c{position:relative;}div.bg div.p.c > div {transform: translate(-50%, -50%);position: absolute;top: 40%;left: 50%;}.bg > div > div {width:100%;}.ma,.m{margin-top:3%;}.a2 .w1f2.pa div img {padding: 24px;width: 100%;}.prtns img{width:100%;}img{max-width:100%;}
+		@media screen and (min-width: 900px) {
+			.hero img{height:56vw;width:100vw;}
+			.html{border-top:1px solid #8A41D6;}
+			.hero .upper {right: 10%;position: absolute;top:0;}
+			.lower {position: absolute;left: 10%;bottom: 25%;}
+			.w2f2 {float:left; width:100%;}
+			.w1f2 {float:left; width:50%;}
+			.w1f2.pa {padding: 48px;text-align:center;}
+			.lst{text-align:left !important;padding-left:10% !important;}
+			.m{display:none;}
+			p{font-size:24px;}
+			.meta img.d {
+				width: 100%;
+				margin-top: -20vh;
+			}
+			.metac {
+				position: relative;
+			}
+			p {max-width: 80vw;display: inline-block;}
+			h2 {letter-spacing:1px;}
+		}
+		.mgldesktop {
+			position: absolute;
+			z-index: 3;
+			width: 35%;
+			padding: 36px;
+			right: 5%;
+		}
+		@media screen and (max-width:900px){
+			.hero img {width: 100vw;height: 56vw;}
+			.menu a{text-decoration: none;color: white;font-weight: bold;font-family: 'Open Sans';font-size:36px;line-height:16px;}
+			.w1f2 {float:left; width:100%;}
+			.d{display:none;}
+			.lighter {
+	height: min(130px,10vh);
+	width: 100%;
+	background: linear-gradient(90deg, #3b1d5e 42.78%, #452366 0.0001%);
+	padding: 0;
+	text-align: center;
+	position: static;
+	margin-top: 0;
+}
+.lighter .menu img {
+	width: 100%;
+	margin-left: 10%;
+}
+.s2.w.a2.ma {
+	margin-top: 0;
+}
+p  {font-size:18px;}
+h2 {font-size:28px;}
+p,h2 {text-align:left;}
+.wm {color:white;}
+.meta img {width:100%;} .metac{position:relative;} .metac img {margin-top:-48px;height:66.7vw;width:100vw;}
+			.lighter > img {width: 50%;margin-left: 10%;padding-top: 20px;}
+			.hero .lower {position: absolute;top: 10px;width: 33%;right: 10%;}
+			.w1f2,.w2f2 {
+				float: left;
+				width: 100%;
+				flex-flow: column;
+				display: flex;
+				flex: 0 0 100%;
+				flex-direction:column;
+			}
+			.upper.soc.m {
+				margin-top: 0;
+				position: absolute;
+				left: 33%;
+				width: 33%;
+				top: 80%;
+			}
+			.upper.abet.m {
+				position: absolute;
+				left: 33%;
+				width: 33%;
+				top: 100%;
+			}
+			.s2 {
+				padding: 15px;
+				display:flex;
+				flex-direction:row;
+				flex-wrap:wrap;
+			}
+			.prtns {
+				margin: 0;
+			}
+			.o2{order:2;}.o1{order:1;}
+			.s2 > .w1f2 p + img {
+				padding: 0;
+			}
+			.mcp {
+				margin-left: -15px;
+				width: 250px;
+			}
+			div.bg {
+				background: url(img/bg1.svg);
+				min-height: 80vh;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+			}
+			
+		}
+		p {line-height:200%;}
+		@media screen and (min-width:3200px) {
+			h2 {font-size:130px !important;line-height: 0;}
+			p {font-size:50px !important;}
+			.bg {background:none !important;margin-top: 300px;margin-bottom: 300px;}
+			img {min-width:45%;}
+			.w1f2.pa {padding: 196px;}
+			.s2 {justify-content: space-around;align-items:center;}
+			img {margin-top: 3vh;}
+			.mf {margin-top: 5vw;}
+			.mtn {margin-top: 5vh;}
+		}
+	</style>
+		<div class="lighter m">
+			<img src="img/mgl.svg" />
+			<div class="menu">
+				<a class="m" href="#contact"><img src="img/env.svg"></a>
+			</div>
+		</div>
+		<img class="mgldesktop d" src="img/mgl.svg" />
+		<div class="hero">
+			<img src="img/animated.svg" />
+		</div>
+		<div class="meta">
+			<div class="metac">
+				<img class="m" src="img/mt3.svg" />
+				<img class="d" src="img/tr2.svg" />
+			</div>
+		</div>
+		<div class="s2 w">
+			<div class="w2f2 p c">
+				<div>
+					<h2 class="d">Partners</h2>
+					<p class="d">We partner, collaborate and are members of some great organizations.</p>
+					<img loading="lazy" class="m" style="width: 93vw;height: 31vw;" src="img/2i.svg" />
+					<div class="prtns">
+						<img loading="lazy" class="d" src="img/pd1.svg" />
+						<img loading="lazy" class="m" src="img/pm1.svg" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var s = !1;
+
+window.addEventListener("scroll", function() {
+    var n;
+    s || (s = !0, (n = new XMLHttpRequest).onreadystatechange = function() {
+        var e;
+        4 === n.readyState && (e = n.responseText, document.querySelector("body").innerHTML += e)
+    }, n.open("GET", "/i.html?q=71"), n.send())}, !0);
+		</script>
+	</body>
+	
+</html>
