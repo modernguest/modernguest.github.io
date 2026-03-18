@@ -553,14 +553,20 @@
   height: 36px;
   color: #9b59ff;
   margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     transform 0.35s ease,
     color 0.35s ease;
 }
+
+  .mini-icon img,
   .mini-icon svg {
     width: 100%;
     height: 100%;
     display: block;
+    object-fit: contain;
   }
 
   .industry-mini-card h3 {
@@ -1197,7 +1203,7 @@
     <div class="industry-top-grid">
       <article class="industry-mini-card">
         <div class="mini-icon">
-          <img src="corporate.svg" alt="Corporate Offices Icon">
+          <img src="/corporate.svg" alt="Corporate Offices Icon" />
         </div>
         <h3>Corporate Offices</h3>
         <p>Enhance employee communication and workplace efficiency</p>
