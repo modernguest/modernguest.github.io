@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MG</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+   @font-face {
+    font-family: 'Nexa';
+    src: url('/bk.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+    body {
+      font-family: 'Nexa';
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+
+
+    header {
+      display: block;
+    }
+
+    h1 {
+      font-size:clamp(2.2rem, 4vw, 3.7rem);
+      line-height: clamp(2.3rem, 4.2vw, 3.8rem);
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .site-nav {
+    width: 100%;
+    padding: 26px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .site-nav__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .site-nav__logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .site-nav__logo img {
+    display: block;
+    width: clamp(190px, 20vw, 310px);
+    height: auto;
+  }
+
+  .site-nav__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px;
+    min-height: 54px;
+    padding: 14px 28px;
+    background: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .site-nav__cta:hover {
+    transform: translateY(-2px);
+    background: #111111;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  }
+
+  @media (max-width: 768px) {
+    .site-nav {
+      padding: 18px 16px;
+    }
+
+    .site-nav__inner {
+      gap: 16px;
+    }
+
+    .site-nav__logo img {
+      width: clamp(150px, 42vw, 220px);
+    }
+
+    .site-nav__cta {
+      min-width: auto;
+      min-height: 46px;
+      padding: 12px 18px;
+      font-size: 0.92rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .site-nav__cta {
+      padding: 12px 16px;
+      font-size: 0.88rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .site-nav {
+      padding: 14px 14px;
+    }
+
+    .site-nav__logo img {
+      width: clamp(120px, 36vw, 180px);
+    }
+
+    .site-nav__cta {
+      min-height: 40px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+    }
+  }
+    
+    main {
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      border-radius: 8px;
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: inherit;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      line-height: 2.4rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #bbb;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #A650FF;
+      color: #fff;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #000;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        padding: 50px 0;
+    }
+
+    .card {
+        max-width: 40%;
+    }
+
+    footer {
+      background-color: #1a1a2e;
+      color: #888;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+    }
+
+
+    /* Services Section */
+
+    .services-section {
+    width: 100%;
+    padding: 56px 24px;
+  }
+
+  .services-wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .services-left {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+  }
+
+  .services-left h2 {
+    font-size: clamp(2.2rem, 4vw, 3.7rem);
+    line-height: 1;
+    font-weight: 700;
+    color: #071d57;
+    margin-bottom: 34px;
+  }
+
+  .services-left .lead {
+    max-width: 500px;
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+
+  .services-left .subtext {
+    max-width: 500px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #2d2d2d;
+  }
+
+  .services-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .service-card {
+    min-height: 220px;
+    border-radius: 28px;
+    padding: 34px 36px;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    align-items: center;
+    gap: 34px;
+     transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+  will-change: transform;
+  }
+
+  .service-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 18px 40px rgba(90, 28, 191, 0.22),
+    0 6px 18px rgba(33, 7, 89, 0.16);
+  filter: brightness(1.03);
+}
+
+  .service-card:nth-child(1) {
+    background: linear-gradient(135deg, #ad62f6 0%, #8e41f2 100%);
+  }
+
+  .service-card:nth-child(2) {
+    background: linear-gradient(135deg, #9034ea 0%, #7d21d9 100%);
+  }
+
+  .service-card:nth-child(3) {
+    background: linear-gradient(135deg, #6e07cb 0%, #5200b4 100%);
+  }
+
+  .service-card:nth-child(4) {
+    background: linear-gradient(135deg, #2b0099 0%, #21007a 100%);
+  }
+
+  .service-icon {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: #d9e1e8;
+    flex-shrink: 0;
+  }
+
+  .service-content h3 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .service-content p {
+    max-width: 440px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 20px;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .service-link .arrow {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+      transition:
+    transform 0.28s ease,
+    background-color 0.28s ease,
+    border-color 0.28s ease;
+  }
+
+  .service-card:hover .service-link .arrow {
+  transform: translateX(4px) scale(1.08);
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+    .service-icon {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: #d9e1e8;
+  flex-shrink: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon img,
+.service-icon svg {
+  max-width: 70%;
+  height: auto;
+  display: block;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.06);
+}
+
+@media (hover: hover) {
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 18px 40px rgba(90, 28, 191, 0.22),
+      0 6px 18px rgba(33, 7, 89, 0.16);
+    filter: brightness(1.03);
+  }
+
+  .service-card:hover .service-link .arrow {
+    transform: translateX(4px) scale(1.08);
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 1);
+  }
+
+  .service-card:hover .service-icon {
+    transform: scale(1.06);
+  }
+
+    .industry-mini-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 18px 40px rgba(80, 0, 180, 0.10),
+      0 6px 18px rgba(0, 0, 0, 0.06);
+    border-color: #cda9ff;
+    background-color: #f8f3ff;
+  }
+  .industry-mini-card:hover .mini-icon {
+    transform: scale(1.08) rotate(-4deg);
+    color: #7f35f6;
+  }
+
+  .industry-mini-card:hover .mini-icon {
+    transform: scale(1.08) rotate(-4deg);
+    color: #7f35f6;
+  }
+   .industry-feature-card:hover .feature-image-wrap img {
+    transform: scale(1.05);
+    filter: brightness(1.03);
+  }
+   .industry-feature-card:hover .feature-image-wrap img {
+    transform: scale(1.05);
+    filter: brightness(1.03);
+  }
+}
+
+  @media (max-width: 1100px) {
+    .services-wrap {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .services-left {
+      position: static;
+    }
+
+    .services-left .lead,
+    .services-left .subtext {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .services-section {
+      padding: 36px 16px;
+    }
+
+    .service-card {
+      grid-template-columns: 1fr;
+      gap: 22px;
+      padding: 28px 22px;
+      min-height: auto;
+    }
+
+    .service-icon {
+      width: 72px;
+      height: 72px;
+    }
+
+    .service-content p {
+      max-width: 100%;
+    }
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+  .industry-section {
+    width: 100%;
+    padding: 64px 24px 72px;
+    background: #efefef;
+  }
+
+  .industry-container {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .industry-header {
+    text-align: center;
+    margin-bottom: 42px;
+  }
+
+  .industry-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 22px;
+    border: 1px solid #d7b8ff;
+    border-radius: 999px;
+    color: #9b59ff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 22px;
+  }
+
+  .industry-header h2 {
+    margin: 0 0 18px;
+    font-size: clamp(2.2rem, 4.4vw, 4rem);
+    line-height: 1.08;
+    font-weight: 500;
+    color: #111111;
+  }
+
+  .industry-header p {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.5;
+    color: #555555;
+  }
+
+  .industry-top-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .industry-mini-card,
+  .industry-feature-card {
+    background: #f4f4f4;
+    border: 1px solid #d8d8d8;
+    border-radius: 20px;
+    
+  }
+
+  .industry-mini-card {
+  padding: 28px 26px 24px;
+  min-height: 190px;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background-color 0.35s ease;
+  will-change: transform;
+}
+
+.mini-icon {
+  width: 36px;
+  height: 36px;
+  color: #9b59ff;
+  margin-bottom: 22px;
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+  .mini-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .industry-mini-card h3 {
+    margin: 0 0 12px;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #171717;
+    max-width: 100%;
+  }
+
+  .industry-mini-card p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: #666666;
+    max-width: 100%;
+  }
+
+  .industry-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+ .industry-feature-card {
+  overflow: hidden;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background-color 0.4s ease;
+  will-change: transform;
+}
+  .feature-image-wrap {
+    aspect-ratio: 16 / 7.2;
+    width: 100%;
+    background: #ddd;
+  }
+
+ .feature-image-wrap img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition:
+    transform 0.7s ease,
+    filter 0.45s ease;
+  will-change: transform;
+}
+
+  .feature-content {
+  padding: 28px 32px 28px;
+  transition: transform 0.35s ease;
+}
+
+  .feature-content h3 {
+    margin: 0 0 14px;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #171717;
+  }
+
+  .feature-content p {
+    margin: 0 0 18px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #5f5f5f;
+  }
+
+  .feature-content ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+  }
+
+  .feature-content li {
+    margin-bottom: 10px;
+    color: #5f5f5f;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .feature-content li::marker {
+    color: #9b59ff;
+  }
+
+  @media (max-width: 1100px) {
+    .industry-top-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .industry-feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .industry-section {
+      padding: 44px 16px 56px;
+    }
+
+    .industry-header {
+      margin-bottom: 30px;
+    }
+
+    .industry-top-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .industry-mini-card {
+      min-height: auto;
+      padding: 22px 20px;
+    }
+
+    .industry-feature-grid {
+      gap: 20px;
+    }
+
+    .feature-content {
+      padding: 22px 20px 24px;
+    }
+
+    .feature-content p {
+      line-height: 1.6;
+    }
+  }
+
+  .faq-section {
+    width: 100%;
+    background: #efefef;
+    padding: 72px 24px 56px;
+  }
+
+  .faq-container {
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .faq-title {
+    margin: 0 0 72px;
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 700;
+    color: #06224f;
+    letter-spacing: -0.02em;
+  }
+
+  .faq-list {
+    width: 100%;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  .faq-item:first-child {
+    border-top: 0;
+  }
+
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 34px 0;
+    color: #06224f;
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    flex: 0 0 26px;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22px;
+    height: 2.5px;
+    background: #06224f;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    transition: transform 0.28s ease, opacity 0.28s ease;
+  }
+
+  .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .faq-item[open] .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+  }
+
+  .faq-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+  }
+
+  .faq-item[open] .faq-content {
+    grid-template-rows: 1fr;
+  }
+
+  .faq-content p {
+    overflow: hidden;
+    margin: 0;
+    max-width: 980px;
+    padding: 0 56px 28px 0;
+    color: #4f5b6b;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .faq-section {
+      padding: 56px 20px 40px;
+    }
+
+    .faq-title {
+      margin-bottom: 42px;
+    }
+
+    .faq-item summary {
+      padding: 24px 0;
+      font-size: 1.3rem;
+      align-items: flex-start;
+    }
+
+    .faq-content p {
+      padding: 0 0 22px 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .faq-title {
+      font-size: 2.3rem;
+    }
+
+    .faq-item summary {
+      gap: 16px;
+      font-size: 1.08rem;
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      flex-basis: 22px;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      width: 18px;
+    }
+  }
+
+  .cta-footer {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .cta-top {
+    position: relative;
+    background: linear-gradient(90deg, #ad61f8 0%, #9d55f2 45%, #a65af5 100%);
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+  }
+
+  .cta-top-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1540px;
+    margin: 0 auto;
+    padding: 80px 120px;
+  }
+
+  .cta-top h2 {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin: 0;
+    color: #f6f3ef;
+    font-size: clamp(3rem, 5.2vw, 4.9rem);
+    line-height: 1.06;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .cta-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding-right: 0;
+  }
+
+  .cta-lines img {
+    height: 100%;
+    width: auto;
+    max-width: 50%;
+  }
+
+
+  .footer-main {
+    background: #001f4d;
+  }
+
+  .footer-inner {
+    max-width: 1540px;
+    margin: 0 auto;
+    padding: 90px 120px 110px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 34px;
+  }
+
+  .footer-logo {
+    display: inline-block;
+    color: #f4f1eb;
+    text-decoration: none;
+    font-size: clamp(2.6rem, 4vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+  }
+
+  .footer-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 335px;
+    min-height: 68px;
+    padding: 16px 30px;
+    border-radius: 999px;
+    background: #295eea;
+    color: #f7f8ff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+
+  .footer-btn:hover {
+    transform: translateY(-2px);
+    background: #3a6af0;
+  }
+
+  .footer-right {
+    justify-self: end;
+    max-width: 360px;
+    color: #f4f1eb;
+    text-align: left;
+  }
+
+  .footer-locations {
+    margin-bottom: 28px;
+  }
+
+  .footer-locations p {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 400;
+    color: #f4f1eb;
+  }
+
+  .footer-contact {
+    margin-bottom: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-contact a {
+    color: #f4f1eb;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: #f4f1eb;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .footer-socials a:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .footer-socials svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  @media (max-width: 1100px) {
+    .cta-top {
+      min-height: 420px;
+    }
+
+    .cta-top-inner,
+    .footer-inner {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+
+    .footer-right {
+      justify-self: start;
+    }
+
+  }
+
+  @media (max-width: 700px) {
+    .cta-top {
+      min-height: 340px;
+    }
+
+    .cta-top-inner {
+      padding: 56px 22px 60px;
+    }
+
+    .footer-inner {
+      padding: 56px 22px 64px;
+    }
+
+    .cta-top h2 {
+      max-width: 320px;
+      font-size: 2.7rem;
+      line-height: 1.08;
+    }
+
+    .footer-btn {
+      min-width: 100%;
+      width: 100%;
+      min-height: 58px;
+      padding: 14px 22px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 2.3rem;
+    }
+
+    .footer-right {
+      max-width: 100%;
+    }
+
+  }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="site-nav">
+  <div class="site-nav__inner">
+    <a href="/" class="site-nav__logo" aria-label="Modernquest home">
+      <img src="/logo.svg" alt="modernquest">
+    </a>
+
+    <a href="#" class="site-nav__cta">Talk to the expert</a>
+  </div>
+</nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img src="/hero.webp" alt="ModernGuest">
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h2>Smart workplace screens for Modern Offices</h2>
+        <button class="btn">Request a Demo</button>
+      </div>
+      <div class="card">
+        <h3>ModernGuest is a cloud platform that powers digital screens across your workplace, from reception to meeting rooms and emergency signage. It connects with the tools you already use, so content stays accurate, secure, and always up to date.</h3>
+      </div>
+    </section>
+  </main>
+
+  <section class="services-section">
+    <div class="services-wrap">
+      <div class="services-left">
+        <h2>Our services</h2>
+
+        <p class="lead">
+          Modern workplace technology should be simple, flexible, and built around your needs. Our solutions are designed to streamline communication, improve efficiency, and create a seamless digital experience across your entire space.
+        </p>
+
+        <p class="subtext">
+          From content management to real-time updates, we help you stay in control while reducing complexity. Everything works together smoothly, so your team and visitors always have the right information at the right time.
+        </p>
+      </div>
+
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="ds.svg" alt="Digital Office Signage Icon" />
+          </div>
+          <div class="service-content">
+            <h3>Digital Office Signage</h3>
+            <p>
+              Digital office signage solutions that connect to the tools you already use, so content
+              stays accurate, secure, and always up to date.
+            </p>
+            <a href="#" class="service-link">
+              <span>Talk to the expert</span>
+              <span class="arrow">›</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <div class="service-icon">
+                <img src="mrd.svg" alt="Meeting Room Displays Icon" />
+            </div>
+          </div>
+          <div class="service-content">
+            <h3>Meeting Room Displays</h3>
+            <p>
+              Make scheduling simple with meeting room displays that show availability, booking details, and live status at a glance. Help teams find the right space faster and reduce booking conflicts throughout the day.
+            </p>
+            <a href="#" class="service-link">
+              <span>Talk to the expert</span>
+              <span class="arrow">›</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="sq.svg" alt="Smart Queue Icon" />
+          </div>
+          <div class="service-content">
+            <h3>Smart Queue</h3>
+            <p>
+              Organize visitor flow and reduce waiting times with intelligent queue management. Create a smoother, more structured experience for both staff and guests.
+            </p>
+            <a href="#" class="service-link">
+              <span>Talk to the expert</span>
+              <span class="arrow">›</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="en.svg" alt="Emergency Notification Icon" />
+          </div>
+          <div class="service-content">
+            <h3>Emergency Notification</h3>
+            <p>
+              Deliver instant alerts and critical information across all screens when it matters most, ensuring everyone stays informed and safe in any situation.
+            </p>
+            <a href="#" class="service-link">
+              <span>Talk to the expert</span>
+              <span class="arrow">›</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="industry-section">
+  <div class="industry-container">
+    <div class="industry-header">
+      <div class="industry-badge">PRODUCT FEATURES</div>
+      <h2>Tailored for Your Industry</h2>
+      <p>
+        Turn every display into a real-time communication hub for staff, visitors, and guests.
+      </p>
+    </div>
+
+    <div class="industry-top-grid">
+      <article class="industry-mini-card">
+        <div class="mini-icon">
+          <img src="corporate.svg" alt="Corporate Offices Icon" />
+        </div>
+        <h3>Corporate Offices</h3>
+        <p>Enhance employee communication and workplace efficiency</p>
+      </article>
+
+      <article class="industry-mini-card">
+        <div class="mini-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.5 12h17M12 3.5c2.5 2.2 4 5.3 4 8.5s-1.5 6.3-4 8.5M12 3.5c-2.5 2.2-4 5.3-4 8.5s1.5 6.3 4 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Global Enterprises</h3>
+        <p>Consistent messaging across multiple locations worldwide</p>
+      </article>
+
+      <article class="industry-mini-card">
+        <div class="mini-icon">
+          <img src="finanial.svg" alt="Financial Services Icon" />
+        </div>
+        <h3>Financial Services</h3>
+        <p>Secure, compliant communication for regulated environments</p>
+      </article>
+
+      <article class="industry-mini-card">
+        <div class="mini-icon">
+          <img src="education.svg" alt="Education Icon" />
+        </div>
+        <h3>Education</h3>
+        <p>Campus-wide communication and wayfinding solutions</p>
+      </article>
+    </div>
+
+    <div class="industry-feature-grid">
+      <article class="industry-feature-card">
+        <div class="feature-image-wrap">
+          <img src="/meeting-room.jpg" alt="Smart Meeting Rooms" />
+        </div>
+        <div class="feature-content">
+          <h3>Smart Meeting Rooms</h3>
+          <p>
+            Integrate with Microsoft Exchange, Google Calendar, and other booking systems.
+            Display real-time availability, check-in status, and upcoming meetings at each room entrance.
+          </p>
+          <ul>
+            <li>Automatic calendar synchronization</li>
+            <li>Touch-screen booking and check-in</li>
+            <li>No-show detection and auto-release</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="industry-feature-card">
+        <div class="feature-image-wrap">
+          <img src="/lobby-display.jpg" alt="Reception and Lobby Displays" />
+        </div>
+        <div class="feature-content">
+          <h3>Reception &amp; Lobby Displays</h3>
+          <p>
+            Create memorable first impressions with dynamic content showcasing company culture,
+            announcements, and wayfinding information for visitors and employees.
+          </p>
+          <ul>
+            <li>Brand-aligned content templates</li>
+            <li>Interactive visitor check-in</li>
+            <li>Emergency alert override</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+x<section class="faq-section">
+  <div class="faq-container">
+    <h2 class="faq-title">FAQ</h2>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>
+          <span>How easy is it to set up the system?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-content">
+          <p>
+            Setup is straightforward and usually takes very little time. We help configure your
+            displays, connect your content sources, and make sure everything is ready to use
+            without a complicated rollout.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Does it integrate with our current tools?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-content">
+          <p>
+            Yes. The platform is designed to work with the tools teams already use, including
+            calendars, workplace systems, communication platforms, and other business software.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Can we manage multiple locations from one place?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-content">
+          <p>
+            Yes, you can manage content, messaging, and display settings across multiple locations
+            from one centralized dashboard, which makes updates much easier to control at scale.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-footer">
+  <div class="cta-top">
+    <div class="cta-top-inner">
+      <h2>More than just a Tv<br>— connected office.</h2>
+    </div>
+    <div class="cta-lines" aria-hidden="true"> <img src="/line.svg" alt=""></div>
+  </div>
+
+  <footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <a href="/" class="footer-logo"><img src="/logo-w.svg" alt="ModernGuest Logo"></a>
+
+        <a href="#" class="footer-btn">Schedule a Call with Expert</a>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-locations">
+          <p>Hudson Valley</p>
+          <p>Hudson Yards</p>
+          <p>Brooklyn</p>
+        </div>
+
+        <div class="footer-contact">
+          <a href="tel:8447242424">844-724-2424</a>
+          <a href="mailto:hello@modernguest.com">hello@modernguest.com</a>
+        </div>
+
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4H16V5.5c-.2 0-.9-.1-1.8-.1-1.8 0-3 1.1-3 3.2v2.6H9V14h2.4v7h2.1Z"/>
+            </svg>
+          </a>
+
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect>
+              <circle cx="12" cy="12" r="4.2"></circle>
+              <circle cx="17.4" cy="6.6" r="1"></circle>
+            </svg>
+          </a>
+
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.2 8.8a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2ZM4.9 10.2h2.6V19H4.9v-8.8Zm4.3 0h2.5v1.2h.1c.4-.7 1.3-1.5 2.8-1.5 3 0 3.5 1.9 3.5 4.5V19h-2.6v-4.1c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2V19H9.2v-8.8Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+
+</body>
+</html>
