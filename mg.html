@@ -1305,7 +1305,7 @@ body.modal-open {
       <img src="/logo.svg" alt="modernquest">
     </a>
 
-    <a href="#" class="site-nav__cta">Talk to the expert</a>
+    <a href="#" class="site-nav__cta" data-open-modal>Talk to the expert</a>
   </div>
 </nav>
   </header>
@@ -1318,7 +1318,7 @@ body.modal-open {
     <section class="cards">
       <div class="card">
         <h2>Smart workplace screens for Modern Offices</h2>
-        <button class="btn">Request a Demo</button>
+        <button class="btn" data-open-modal>Request a Demo</button>
       </div>
       <div class="card">
         <h3>ModernGuest is a cloud platform that powers digital screens across your workplace, from reception to meeting rooms and emergency signage. It connects with the tools you already use, so content stays accurate, secure, and always up to date.</h3>
@@ -1351,7 +1351,7 @@ body.modal-open {
               Digital office signage solutions that connect to the tools you already use, so content
               stays accurate, secure, and always up to date.
             </p>
-            <a href="#" class="service-link">
+            <a href="#" class="service-link" data-open-modal>
               <span>Talk to the expert</span>
               <span class="arrow">›</span>
             </a>
@@ -1369,7 +1369,7 @@ body.modal-open {
             <p>
               Make scheduling simple with meeting room displays that show availability, booking details, and live status at a glance. Help teams find the right space faster and reduce booking conflicts throughout the day.
             </p>
-            <a href="#" class="service-link">
+            <a href="#" class="service-link" data-open-modal>
               <span>Talk to the expert</span>
               <span class="arrow">›</span>
             </a>
@@ -1385,7 +1385,7 @@ body.modal-open {
             <p>
               Organize visitor flow and reduce waiting times with intelligent queue management. Create a smoother, more structured experience for both staff and guests.
             </p>
-            <a href="#" class="service-link">
+            <a href="#" class="service-link" data-open-modal>
               <span>Talk to the expert</span>
               <span class="arrow">›</span>
             </a>
@@ -1401,7 +1401,7 @@ body.modal-open {
             <p>
               Deliver instant alerts and critical information across all screens when it matters most, ensuring everyone stays informed and safe in any situation.
             </p>
-            <a href="#" class="service-link">
+            <a href="#" class="service-link" data-open-modal>
               <span>Talk to the expert</span>
               <span class="arrow">›</span>
             </a>
@@ -1568,7 +1568,7 @@ x<section class="faq-section">
       <div class="footer-left">
         <a href="/" class="footer-logo"><img src="/logo-w.svg" alt="ModernGuest Logo"></a>
 
-        <a href="#" class="footer-btn">Schedule a Call with Expert</a>
+        <a href="#" class="footer-btn" data-open-modal>Schedule a Call with Expert</a>
       </div>
 
       <div class="footer-right">
@@ -1628,7 +1628,6 @@ x<section class="faq-section">
 
 <script>
   const modal = document.getElementById("contactModal");
-  const closeButtons = modal.querySelectorAll("[data-close-modal]");
   const contactForm = modal.querySelector(".contact-form");
   const contactSubtitle = modal.querySelector(".contact-form-card__subtitle");
   const contactSuccess = modal.querySelector(".contact-form-success");
@@ -1637,6 +1636,7 @@ x<section class="faq-section">
     contactForm.hidden = false;
     contactSubtitle.hidden = false;
     contactSuccess.classList.remove("is-visible");
+    contactForm.reset();
   };
 
   const showSuccessState = () => {
@@ -1658,26 +1658,23 @@ x<section class="faq-section">
     document.body.classList.remove("modal-open");
   };
 
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    showSuccessState();
-  });
-
-  document.querySelectorAll("button, a").forEach((el) => {
+  // Open modal only on explicit trigger elements
+  document.querySelectorAll("[data-open-modal]").forEach((el) => {
     el.addEventListener("click", (e) => {
-      const isInsideModal = el.closest("#contactModal");
-      const isClose = el.hasAttribute("data-close-modal");
-      const isSubmitInsideModal = isInsideModal && el.type === "submit";
-
-      if (isInsideModal || isClose || isSubmitInsideModal) return;
-
       e.preventDefault();
       openModal();
     });
   });
 
-  closeButtons.forEach((btn) => {
-    btn.addEventListener("click", closeModal);
+  // Close modal on overlay or close button
+  modal.querySelectorAll("[data-close-modal]").forEach((el) => {
+    el.addEventListener("click", closeModal);
+  });
+
+  // Close on form submit → show thank-you
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    showSuccessState();
   });
 
   document.addEventListener("keydown", (e) => {
